@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="https://framerusercontent.com/images/MnBZ8Szs1Jv0a56zSLPp7jYfw.jpg">
 
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.css">
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="https://stupendous-shower-417118.framer.app/">
     <meta property="og:url" content="https://stupendous-shower-417118.framer.app/">
@@ -14221,7 +14221,9 @@
     <!-- Start of bodyEnd -->
 
     <!-- End of bodyEnd -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
     <script>
+
             (function enforceTitle() {
                 const originalTitle = "Atomic";
 
@@ -14260,7 +14262,21 @@
                 const titleElement = document.querySelector('title');
                 observer.observe(titleElement, { childList: true, subtree: true, characterData: true });
             })();
+        // Initialize Lenis
+        const lenis = new Lenis();
 
+        // Listen for the scroll event and log the event data
+        lenis.on('scroll', (e) => {
+            console.log(e);
+        });
+
+        // Use requestAnimationFrame to continuously update the scroll
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
     </script>
 </body>
 
